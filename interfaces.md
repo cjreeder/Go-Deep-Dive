@@ -16,8 +16,75 @@ Interface
     It doesn't care how your type does those things, just as long as it satisfies the methods on the interface. 
     ```
     - helpful in building reusable code across your application
-    - Implicit - (No declaration statements like X implements y) - as long as it satisfies the methods, it is considered a type from that interface
-    -            
+    - Implicit - (No declaration statements like X implements y) - as long as it satisfies the methods, it is considered a type from that interface      
+
+### Example of an interface:
+****
+##### Gobyexample code - 
+```go
+
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+type geometry interface {
+    area() float64
+    perim() float64
+}
+
+type rect struct {
+    width, height float64
+}
+type circle struct {
+    radius float64
+}
+
+// Rect is implicitly calling the geometry interface by satisfying
+// both the area() and perim() methods
+func (r rect) area() float64 {
+    return r.width * r.height
+}
+func (r rect) perim() float64 {
+    return 2*r.width + 2*r.height
+}
+
+// Circle is implicitly calling the geometry interface by satisfying
+// both the area() and perim() methods
+func (c circle) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+func (c circle) perim() float64 {
+    return 2 * math.Pi * c.radius
+}
+
+func measure(g geometry) {
+    fmt.Println(g)
+    fmt.Println(g.area())
+    fmt.Println(g.perim())
+}
+
+func detectCircle(g geometry) {
+    if c, ok := g.(circle); ok {
+        fmt.Println("circle with radius", c.radius)
+    }
+}
+
+func main() {
+    r := rect{width: 3, height: 4}
+    c := circle{radius: 5}
+
+    measure(r)
+    measure(c)
+
+    detectCircle(r)
+    detectCircle(c)
+}
+
+```
+
 
 **When to interface**
   - Common Behavior
@@ -30,11 +97,7 @@ Interface
   - 
 ---
 
-### How to use an interface:
-****
-```go
 
-```
 **Here's a functionally equivalent block:**
 ```go
 
