@@ -12,6 +12,28 @@ Interfaces are like a contract or an agreement that if your type can doInterface
  
 **When not to interface**
 
+### How to use an interface:
+****
+```go
+
+```
+**Here's a functionally equivalent block:**
+```go
+
+```
+**The bigger the interface, the weaker the abstraction. —Rob Pike**
+The more methods you add and build into your interface, the less abstract the interface is and thus the less reusable it can be.
+
+
+
+#### Tips for using interfaces:
+> * 
+> * 
+> * 
+> * 
+> * 
+> * 
+> * 
 
 _see [Tour of Go](https://go.dev/tour/methods/9)_
 _see [100 Go Mistakes](https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88)_
