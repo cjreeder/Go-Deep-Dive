@@ -5,13 +5,14 @@
   - ☢️ In my opinion, Tour of Go does a poor job describing what an interface is and when and how to use them.
 
 **The Interface Type - A Better Definition**
-***An Interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. -100 Go Mistakes***
+Interface
+: An Interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. -100 Go Mistakes
   - Interfaces are ...
     - like a contract or a set of expectations applied to a type - 
     ```
     "If your type can do these things, then you can be used whereever this interface is expected"
+    It doesn't care how your type does those things, just as long as it satisfies the methods on the interface. 
     ```
-    - It doesn't care how your type does those things, just as long as it satisfies the methods on the interface. 
     - helpful in building reusable code across your application
     - Implicit - (No declaration statements like X implements y) - as long as it satisfies the methods, it is considered a type from that interface
     -            
