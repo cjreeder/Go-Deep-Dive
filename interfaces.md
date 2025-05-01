@@ -1,8 +1,8 @@
 # Core - Interfaces
 ---
 ### What is an Interface type is Go
-**Interfaces Definition:  An interface type is defined as a set of method signatures.**
-In my opinion, Tour of Go does a poor job describing what an interface is and when and how to use them.
+**Tour of Go Interface Definition:  An interface type is defined as a set of method signatures.**
+  - ☢️ In my opinion, Tour of Go does a poor job describing what an interface is and when and how to use them.
 
 **The Interface Type - A Better Definition**
 ***An Interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. -100 Go Mistakes***
