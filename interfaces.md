@@ -19,7 +19,7 @@ Interface
     - Implicit - (No declaration statements like X implements y) - as long as it satisfies the methods, it is considered a type from that interface      
 
 ### Example of an interface:
-****
+
 ##### Gobyexample code - 
 ```go
 
@@ -63,7 +63,6 @@ func main() {
     MakeItTalk(r)
     MakeItTalk(h)
 }
-
 ```
 
 **When to use interfaces**
@@ -84,18 +83,35 @@ func main() {
 
 ---
 
-**Interface Pollution**
-
-**The bigger the interface, the weaker the abstraction. —Rob Pike**
-
+## Interface Pollution
+```
+The bigger the interface, the weaker the abstraction. —Rob Pike**
+```
 "...interfaces are made to create abstractions. And the main caveat when programming meets abstractions is remembering that abstractions should be discovered, not created. What does this mean? It means we shouldn’t start creating abstractions in our code if there is no immediate reason to do so." - Teiva Harsanyi - 100 Go Mistakes and How to Avoid Them
 
 Interface pollution happens when an interface bloats with large sets of methods.  This makes the interface difficult to implement when types need to implement all the methods especially if the type doesn't actually need all the methods.  
 
-**How to fix this issue**
-#### Interface Composition
-Embedding interfaces into each other - Interface inception - one interface to rule them all.  
+### How to fix this issue
+**Interface Composition**
+Embedding interfaces into each other - Interface of interfaces - one interface that combines the effectiveness of multiple interfaces.  Especially useful when building additional types that need to extend beyond the original set of interfaces without finding all other instances that instantiate the interface.
 
+```go
+type Speaker interface {
+    Speak() string
+}
+
+type LegCount interface {
+    LegNum() int
+}
+
+type Animal interface {
+    Speaker
+    LegCount
+}
+```
+Interface Composition extends the abstraction so that additional methods can be used without needing to change the existing.  This can also lead to readability issues so documentation is critical and be careful not to overuse this functionality. (Be purposeful)
+
+---
 
 **Empty interfaces - the any type**
 
