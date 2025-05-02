@@ -93,7 +93,7 @@ func main() {
 Interface pollution happens when an interface bloats with large sets of methods.  This makes the interface difficult to implement when types need to implement all the methods especially if the type doesn't actually need all the methods.  
 
 **How to fix this issue**
-####Interface Composition####
+#### Interface Composition
 Embedding interfaces into each other - Interface inception - one interface to rule them all.  
 
 
