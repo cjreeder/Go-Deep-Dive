@@ -10,7 +10,7 @@ Interface
 : An Interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. -100 Go Mistakes
 
   - Interfaces are ...
-    - like a contract or a set of expectations applied to a type - 
+    - like a contract or a set of expectations applied to a type - enrolled (an object or type can enroll an interface)
     ```
     "If your type can do these things, then you can be used whereever this interface is expected"
     It doesn't care how your type does those things, just as long as it satisfies the methods on the interface. 
@@ -85,36 +85,41 @@ func main() {
 
 ```
 
-
 **When to interface**
   - Common Behavior
+    - Use an interface when multiple types share common behavior, allowing you to define a set of methods that different structs can implement. This enables polymorphism, making it easier to write generic and reusable code.
   - Decoupling
+    - Interfaces help decouple code by defining dependencies in terms of behavior rather than concrete types. This improves modularity and testability, as components can be swapped without changing the surrounding logic.
   - Restricting behavior
+    - Interfaces can restrict behavior by exposing only the necessary methods, even if the underlying type has many more. This enforces encapsulation and ensures consumers interact with a limited and well-defined API.
 
 **When not to interface**
-  - When a Generic would work better
-  - Any Catchall
-  - 
+  - When there's only one implementation - (Also don't use it prematurely)
+    - If you only have one use case, don't add abstraction by using an interface.  Even if you think that maybe down the road you might have more use cases. Note that in comments but don't implement. It clusters code and makes it much more difficult to follow. 
+  - When it hides meaningful behavior
+  - When performance is critical
+  - Empty interfaces - the any type - 
 ---
 
 
-**Here's a functionally equivalent block:**
-```go
+**Interface Pollution**
 
-```
 **The bigger the interface, the weaker the abstraction. —Rob Pike**
-The more methods you add and build into your interface, the less abstract the interface is and thus the less reusable it can be.
+
+"...interfaces are made to create abstractions. And the main caveat when programming meets abstractions is remembering that abstractions should be discovered, not created. What does this mean? It means we shouldn’t start creating abstractions in our code if there is no immediate reason to do so." - Teiva Harsanyi - 100 Go Mistakes and How to Avoid Them
+
+
 
 
 
 #### Tips for using interfaces:
+> * Use them sparingly
+> * 
+> * 
+> * 
+> * Comments can be your friend.  Since interfaces are implied, note where you have types that enrolled in an interface
+> * 
 > * Beware Ye the empty interface - interface{} with no methods (Only on discovery, not in production)
-> * 
-> * 
-> * 
-> * 
-> * 
-> * 
 
 #### Quick Reference Recap
 > * Beware Ye the empty interface - interface{} with no methods (Only on discovery, not in production)
