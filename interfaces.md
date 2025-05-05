@@ -7,7 +7,7 @@
 **The Interface Type - A Better Definition**
 
 Interface
-: An Interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. -100 Go Mistakes
+: An Interface is a type that provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. -100 Go Mistakes
 
   - Interfaces are ...
     - like a contract or a set of expectations applied to a type - enrolled (an object or type can enroll an interface)
@@ -18,6 +18,26 @@ Interface
     - helpful in building reusable code across your application
     - Implicit - (No declaration statements like X implements y) - as long as it satisfies the methods, it is considered a type from that interface      
 
+
+Interface has a two roles: 
+1. Interface is a type (contract) - It's statically defined usually at the top of documents along with structs.  When an interface type is defined, 
+```go
+type Speaker interface {
+    Speak() string
+}
+```
+So any type that has a method Speak that returns the value of string is a speaker.
+
+2. Interface as a value - A concrete value can be assigned to an interface type, it becomes a dynamic value that carries both the value and it's original type.
+```go
+interface value = (concrete type, concrete value)
+```
+So you can store any type of data in an interface variable which gives extra flexibility but can lead to type issues as it bypasses the static type nature of Go.
+```go
+var man interface{}
+man = "Hello World!"
+```
+---
 ### Example of an interface:
 
 ##### Gobyexample code - 
@@ -65,7 +85,7 @@ func main() {
 }
 ```
 
-**When to use interfaces**
+**When to use interface type (contract)**
   - Common Behavior
     - Use an interface when multiple types share common behavior, allowing you to define a set of methods that different structs can implement. This enables polymorphism, making it easier to write generic and reusable code.
   - Decoupling
@@ -142,13 +162,10 @@ Empty interfaces have their place though.  We usual use empty interfaces when we
 > * Writing Middleware or plugins - Empty interfaces let you plug in any handler, callback, or data type, especially when you define your own type system or registry.
 
 #### Tips for using interfaces:
-> * Use them sparingly - keep them small and simple
+> * Use them sparingly - keep them small and simple (make them reusable)
 > * Interfaces are implicit - keep track of usage and methods appropriately
 > * Comments can be your friend.  Since interfaces are implied, note where you have types that enrolled in an interface
-> * Interfaces 
-> * 
-> * 
-> * Beware warry of the empty interface - (Only on discovery, not in production)
+> * Interface variables are powerful and allow for passing data without necessarily knowing the type - use with caution
 
 _see [Tour of Go](https://go.dev/tour/methods/9)_
 _see [100 Go Mistakes and How to Avoid Them](https://learning.oreilly.com/library/view/100-go-mistakes/9781617299599/OEBPS/Text/02.htm#heading_id_14)_
