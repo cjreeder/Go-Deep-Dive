@@ -155,7 +155,7 @@ This obscures the type information about the items in the interface. In order to
 
 Empty interfaces have their place though.  We usual use empty interfaces when we are unsure of what type of data will be returned from an API or device. 
 
-#### Empty interface usage
+#### interface variable usage
 > * Handling Arbitrary Input from sources you don't necessarily control and don't know the structure of ahead of time. (ie APIs)
 > * Generic collections of data in slices or maps that hold multiple different types. (Not recommended)
 > * Communicating with Third party libraries - some libraries accept or return an interface{} to build flexibility into the library (ie database drivers)
